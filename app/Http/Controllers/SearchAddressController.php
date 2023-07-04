@@ -23,6 +23,7 @@ class SearchAddressController extends Controller
 
             return response()->json([
                 'error' => false,
+                'message' => 'Success',
                 'data' => $data
             ], 200);
 
@@ -52,6 +53,7 @@ class SearchAddressController extends Controller
 
             return response()->json([
                 'error' => false,
+                'message' => 'Success',
                 'data' => $data
             ], 200);
 
