@@ -15,6 +15,8 @@ return new class extends Migration
             $table->smallInteger('id')->unsigned()->primary();
             $table->unsignedSmallInteger('province_id');
             $table->string('name', 100);
+            $table->string('type', 10);
+            $table->string('postal_code', 5);
 
             $table->foreign('province_id')->references('id')->on('provinces');
         });
