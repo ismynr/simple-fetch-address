@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SearchAddressController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// API
+Route::get('/search/provinces', [SearchAddressController::class, 'provinces']);
+Route::get('/search/cities', [SearchAddressController::class, 'cities']);

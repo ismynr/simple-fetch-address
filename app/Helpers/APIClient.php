@@ -87,15 +87,15 @@ class APIClient {
 
         // Error Handling
         if (!isset($data['rajaongkir']['status']['code']) || !isset($data['rajaongkir']['results'])) {
-            new Exception('Error Server!');    
+            throw new Exception('Error Server!');    
         }
 
         if ($data['rajaongkir']['status']['code'] != 200) {
-            new Exception($data['rajaongkir']['status']['code']. ' Error Result: '.$data['rajaongkir']['status']['description']);
+            throw new Exception($data['rajaongkir']['status']['code']. ' Error Result: '.$data['rajaongkir']['status']['description']);
         }
 
         if (count($data['rajaongkir']['results']) < 1) {
-            new Exception('Data Not Found!');
+            throw new Exception('Data Not Found!');
         }
 
         return $data;
