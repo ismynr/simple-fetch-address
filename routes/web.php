@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SearchAddressController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +20,7 @@ Route::get('/', function () {
 });
 
 // API
-Route::get('/search/provinces', [SearchAddressController::class, 'provinces']);
-Route::get('/search/cities', [SearchAddressController::class, 'cities']);
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/search/provinces', [SearchAddressController::class, 'provinces']);
+    Route::get('/search/cities', [SearchAddressController::class, 'cities']);
+});
