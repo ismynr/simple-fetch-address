@@ -2,6 +2,8 @@
 namespace App\Helpers;
 
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Log;
 
 class APIClient {
 
@@ -91,11 +93,11 @@ class APIClient {
         }
 
         if ($data['rajaongkir']['status']['code'] != 200) {
-            throw new Exception($data['rajaongkir']['status']['code']. ' Error Result: '.$data['rajaongkir']['status']['description']);
+            throw new Exception('Error Result: '.$data['rajaongkir']['status']['description'], $data['rajaongkir']['status']['code']);
         }
 
         if (count($data['rajaongkir']['results']) < 1) {
-            throw new Exception('Data Not Found!');
+            throw new ModelNotFoundException('Data Not Found!');
         }
 
         return $data;

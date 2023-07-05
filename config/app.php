@@ -194,4 +194,5 @@ return [
     */
 
     'raja_ongkir_key' => env('RAJA_ONGKIR_KEY', ''),
+    'data_source_address' => env('DATA_SOURCE_ADDRESS', 'database'),
 ];

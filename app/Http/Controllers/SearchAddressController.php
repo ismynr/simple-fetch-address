@@ -2,24 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\City;
-use App\Models\Province;
+use App\Domains\SearchProvider\SearchProviderInterface;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
 class SearchAddressController extends Controller
 {
+    private $searchProvider;
+
+    public function __construct(SearchProviderInterface $searchProviderInterface)
+    {
+        $this->searchProvider = $searchProviderInterface;
+    }
+
     public function provinces(Request $request) {
         try {
             $id = $request->query('id');
             $data = ($id) 
-                ? Province::find($id)
-                : Province::all();
-
-            if (!$data) {
-                throw new ModelNotFoundException();
-            }
+                ? $this->searchProvider->getSingleProvince($id)
+                : $this->searchProvider->getAllProvinces();
 
             return response()->json([
                 'error' => false,
@@ -44,12 +46,8 @@ class SearchAddressController extends Controller
         try {
             $id = $request->query('id');
             $data = ($id) 
-                ? City::find($id)
-                : City::all();
-
-            if (!$data) {
-                throw new ModelNotFoundException();
-            }
+                ? $this->searchProvider->getSingleCity($id)
+                : $this->searchProvider->getAllCities();
 
             return response()->json([
                 'error' => false,
