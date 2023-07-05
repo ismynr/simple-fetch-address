@@ -12,11 +12,11 @@
 - add new key in .env (2 type swapable sources)
 
     ```
-    RAJA_ONGKIR_KEY=
+    RAJA_ONGKIR_KEY=0df6d5bf733214af6c6644eb8717c92c
     DATA_SOURCE_ADDRESS=database
     ```
     ```
-    RAJA_ONGKIR_KEY=
+    RAJA_ONGKIR_KEY=0df6d5bf733214af6c6644eb8717c92c
     DATA_SOURCE_ADDRESS=api
     ```
 
