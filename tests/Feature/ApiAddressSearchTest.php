@@ -45,7 +45,7 @@ class ApiAddressSearchTest extends TestCase
             "Accept" => "application/json"
         ])->json();
 
-        $response = $this->get('/search/provinces?id=11111111', [
+        $response = $this->get('/search/provinces?id=9999', [
             "Accept" => "application/json",
             "Authorization" => $login['token_type'] . " " . $login['access_token'],
         ]);
@@ -59,7 +59,7 @@ class ApiAddressSearchTest extends TestCase
 
     public function test_get_single_province_fail_auth(): void
     {
-        $response = $this->get('/search/provinces?id=11111111', [
+        $response = $this->get('/search/provinces?id=1', [
             "Accept" => "application/json",
             "Authorization" => 'no',
         ]);
@@ -123,7 +123,7 @@ class ApiAddressSearchTest extends TestCase
             "Accept" => "application/json"
         ])->json();
 
-        $response = $this->get('/search/cities?id=11111111', [
+        $response = $this->get('/search/cities?id=9999', [
             "Accept" => "application/json",
             "Authorization" => $login['token_type'] . " " . $login['access_token'],
         ]);
@@ -137,7 +137,7 @@ class ApiAddressSearchTest extends TestCase
 
     public function test_get_single_city_fail_auth(): void
     {
-        $response = $this->get('/search/cities?id=11111111', [
+        $response = $this->get('/search/cities?id=1', [
             "Accept" => "application/json",
             "Authorization" => 'no',
         ]);
